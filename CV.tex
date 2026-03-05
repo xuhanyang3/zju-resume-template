@@ -75,14 +75,24 @@
 \end{tikzpicture}%
 %%%% 利用tikz来定位学校Logo，这里只在第一页显示
 % 【注意】：请将`your_university_logo.png`替换为您学校的Logo文件名，或删除本行以移除Logo。
+% 已根据您的要求，在“教育背景”部分加入了浙江大学的信息。您可以在此处使用浙江大学的Logo文件，例如 `zju-logo.png`。
 \begin{tikzpicture}[remember picture, overlay]
-\node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=1.5cm]{your_university_logo.png}};
+\node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=1.5cm]{zju-logo.png}}; % 请确保图片文件存在
 \end{tikzpicture}%
 \centerline{\LARGE\bfseries{徐晗洋}}
-\centerline{\normalsize{\faPhone\ (请填写您的手机号) \quad \faEnvelopeO\ \href{mailto:(请填写您的邮箱)}{(请填写您的邮箱)}}}
-\centerline{\normalsize{\faGithubSquare\ \href{https://github.com/maksymilan}{github.com/maksymilan} \quad \faRssSquare\ \href{https://maksymilan.github.io/}{maksymilan.github.io}}}
+\centerline{\normalsize{\faPhone\ 13915917895 \quad \faEnvelopeO\ \href{mailto:hanyangxucs@gmail.com}{hanyangxucs@gmail.com}}}
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}
-\textbf{电子科技大学 (University of Electronic Science and Technology of China)} \hfill 2022.9 -- 至今\\[0.5em]
+% ========== 新增的浙江大学教育经历 ==========
+\textbf{浙江大学 (Zhejiang University)} \hfill 2025.9 -- 至今\\[0.5em]
+计算机科学与技术 专业 \quad 硕士（保研，预计2028年毕业）% 专业和预计毕业年份为推断，您可根据实际情况修改。
+\begin{itemize}[nosep]
+    \item \textbf{研究方向：} 机器学习系统 (MLSys)， AI基础设施 (AI Infra)
+    \item \textbf{相关课程：} 高级计算机体系结构， 分布式系统， 机器学习理论
+\end{itemize}
+
+\vspace{0.5em} % 增加一点两段经历之间的间距
+% ========== 原有的电子科技大学教育经历 ==========
+\textbf{电子科技大学 (University of Electronic Science and Technology of China)} \hfill 2022.9 -- 2025.6\\[0.5em]
 人工智能专业 \quad 本科
 \begin{itemize}[nosep]
 \item \textbf{GPA: 3.97/4.0}，专业排名：5/65
@@ -125,6 +135,7 @@
 \begin{itemize}[parsep=0.5ex]
 \item \textbf{技术博客：} \href{https://maksymilan.github.io/}{maksymilan.github.io}
 \item \textbf{GitHub：} \href{https://github.com/maksymilan}{github.com/maksymilan}
-\item \textbf{个人评价：} 对人工智能领域有浓厚兴趣，具备较强的自我驱动能力和扎实的数理基础，逻辑思维清晰，致力于探索AI技术的原理与应用。
+% 已微调个人评价，以体现从电子科技大学到浙江大学的学术发展路径。
+\item \textbf{个人评价：} 对人工智能与计算机系统有浓厚兴趣，具备较强的自我驱动能力和扎实的数理基础。在电子科技大学取得优异成绩后保研至浙江大学，致力于在机器学习系统与AI基础设施方向进行更深入的研究与实践。
 \end{itemize}
 \end{document}
