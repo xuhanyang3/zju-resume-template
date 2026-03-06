@@ -32,21 +32,21 @@
 \usepackage{fontawesome}
 \usepackage[
  a4paper,
- left=1.2cm,
- right=1.2cm,
- top=1.2cm,
- bottom=1cm,
+ left=1.5cm,
+ right=1.5cm,
+ top=1.5cm,
+ bottom=1.2cm,
  nohead
 ]{geometry}
-\renewcommand{\baselinestretch}{1.1}
+\renewcommand{\baselinestretch}{1.2}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \setlist{noitemsep}
-\setlist[itemize]{topsep=0.1em, leftmargin=*, partopsep=0pt}
-\setlist[enumerate]{topsep=0.1em, leftmargin=*, partopsep=0pt}
+\setlist[itemize]{topsep=0.15em, leftmargin=*, partopsep=0pt}
+\setlist[enumerate]{topsep=0.15em, leftmargin=*, partopsep=0pt}
 
 \newlength{\interEntrySpacing}
-\setlength{\interEntrySpacing}{0.5em}
+\setlength{\interEntrySpacing}{0.6em}
 \newcommand{\entrysep}{\vspace{\interEntrySpacing}}
 
 \titleformat{\section}
@@ -54,7 +54,7 @@
 {}{0em}
 {}
 [{\color{CVBlue}\titlerule}]
-\titlespacing*{\section}{0cm}{*0.8}{*0.5}
+\titlespacing*{\section}{0cm}{*0.8}{*0.6}
 
 \begin{document}
 \pagenumbering{gobble}
@@ -74,31 +74,32 @@
 \vspace{0.2em}
 \textbf{电子科技大学}\hfill 2022.9 -- 2025.6 \\
 人工智能 本科 \hfill GPA: 3.97/4.0 (排名: 5/65) \\
-相关课程：数据结构与算法、机器学习、计算机视觉、概率论与数理统计
+相关课程：数据结构与算法、机器学习、深度学习、计算机视觉、自然语言处理、概率论与数理统计
 
 \section{\faUsers\ 项目与研究经历}
 \textbf{基于多模态大模型的葡萄膜炎诊断研究} \hfill 2025.9 -- 至今 \\
-采用Qwen3-VL-8B模型在包含1834张眼底图像的私有数据集上进行LoRA微调，通过患者级数据划分与系统调优，在独立测试集上达到95.74\%准确率与96.52\% F1分数。主导了数据量（5\%-100\%）与多模态（FFA/OCT/Optos）影响的消融实验，并与FLAIR、PubMedCLIP、RETFound等前沿模型进行对比分析。
+采用Qwen3-VL-8B模型在包含1834张眼底图像的私有数据集上进行LoRA微调，通过患者级数据划分与系统调优，在独立测试集上达到95.74\%准确率与96.52\% F1分数。主导了数据量（5\%-100\%）与多模态（FFA/OCT/Optos）影响的消融实验，并与FLAIR、PubMedCLIP、RETFound等前沿模型进行对比分析。本研究探索了通用视觉-语言大模型在医学图像诊断中的迁移能力与数据效率问题。
 
 \entrysep
 \textbf{基于序列的推荐系统研究与改进} \hfill 2023.10 -- 2024.05 \\
-在杨波教授课题组复现并改进SASRec序列推荐模型，针对长序列依赖中的信息稀释问题提出注意力权重修正方案，在MovieLens-1M数据集上使NDCG@10与HR@10指标获得稳定提升。
+在杨波教授课题组复现并改进SASRec序列推荐模型，针对长序列依赖中的信息稀释问题提出注意力权重修正方案，在MovieLens-1M数据集上使NDCG@10与HR@10指标获得稳定提升。通过分析用户历史行为序列，优化了模型对用户动态兴趣的建模能力。
 
 \entrysep
 \textbf{基于知识图谱与LLM的医疗问答系统} \hfill 2023.03 -- 2023.07 \\
-负责对话管理与查询转换模块，将自然语言问题解析为知识图谱查询（Cypher），结合规则匹配与ChatGPT API实现意图澄清与信息补全，实践了RAG的基本流程。
+负责对话管理与查询转换模块，将自然语言问题解析为知识图谱查询（Cypher），结合规则匹配与ChatGPT API实现意图澄清与信息补全，实践了RAG的基本流程。该系统整合了结构化医疗知识与大语言模型的推理能力，提供精准、可解释的医疗信息查询服务。
 
 \section{\faCogs\ 技能专长}
 \begin{itemize}[nosep]
-\item \textbf{编程语言：} Python, C/C++
-\item \textbf{机器学习框架：} PyTorch, TensorFlow
-\item \textbf{英语能力：} CET-6 (627分)，具备流畅的英文文献阅读能力
+\item \textbf{编程语言：} Python, C/C++ (熟悉Go)
+\item \textbf{机器学习框架：} PyTorch, TensorFlow, Scikit-learn
+\item \textbf{开发工具：} Linux, Git, LaTeX, Docker
+\item \textbf{英语能力：} CET-6 (627分)，具备流畅的英文技术文献阅读与写作能力
 \end{itemize}
 
 \section{\faList\ 获奖情况}
 \begin{itemize}[nosep]
 \item 全国大学生数学竞赛（非数学类）\textbf{省级一等奖} \hfill 2023
-\item 电子科技大学校级“优秀学生”\textbf{奖学金}（连续两年） \hfill 2022, 2023
+\item 电子科技大学校级"优秀学生"\textbf{奖学金}（连续两年） \hfill 2022, 2023
 \end{itemize}
 
 \end{document}
