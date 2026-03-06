@@ -71,7 +71,7 @@
 % 【注意】：请将`avatar.jpg`替换为您的证件照文件名，并确保图片文件与.tex文件在同一目录，或在`\includegraphics`中指定正确路径。
 % 如果您不需要照片，请删除以下\tikzpicture环境。
 \begin{tikzpicture}[remember picture, overlay]
-\node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{avatar.jpg}};
+\node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{xu.jpg}};
 \end{tikzpicture}%
 %%%% 利用tikz来定位学校Logo，这里只在第一页显示
 % 【注意】：请将`your_university_logo.png`替换为您学校的Logo文件名，或删除本行以移除Logo。
@@ -82,16 +82,16 @@
 \centerline{\LARGE\bfseries{徐晗洋}}
 \centerline{\normalsize{\faPhone\ 13915917895 \quad \faEnvelopeO\ \href{mailto:hanyangxucs@gmail.com}{hanyangxucs@gmail.com}}}
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}
-% ========== 新增的浙江大学教育经历 ==========
+% ========== 浙江大学教育经历 (已补充导师信息) ==========
 \textbf{浙江大学 (Zhejiang University)} \hfill 2025.9 -- 至今\\[0.5em]
-计算机科学与技术 专业 \quad 硕士（保研，预计2028年毕业）% 专业和预计毕业年份为推断，您可根据实际情况修改。
+计算机科学与技术 专业 \quad 硕士（保研，预计2028年毕业）
 \begin{itemize}[nosep]
-    \item \textbf{研究方向：} 机器学习系统 (MLSys)， AI基础设施 (AI Infra)
-    \item \textbf{相关课程：} 高级计算机体系结构， 分布式系统， 机器学习理论
+    \item \textbf{导师：吴健 教授}（长江学者，浙江大学求是特聘教授） % 补充导师信息
+    \item \textbf{研究方向：} 多模态大模型
+    \item \textbf{相关课程：} 深度学习，自然语言处理，计算机视觉
 \end{itemize}
-
 \vspace{0.5em} % 增加一点两段经历之间的间距
-% ========== 原有的电子科技大学教育经历 ==========
+% ========== 电子科技大学教育经历 ==========
 \textbf{电子科技大学 (University of Electronic Science and Technology of China)} \hfill 2022.9 -- 2025.6\\[0.5em]
 人工智能专业 \quad 本科
 \begin{itemize}[nosep]
@@ -99,7 +99,18 @@
 \item 相关课程：数据结构与算法、机器学习、深度学习、计算机视觉、自然语言处理、概率论与数理统计
 \end{itemize}
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目与研究经历}
-% --- 第一个项目 ---
+% ========== 新增：葡萄膜炎诊断项目 (当前研究) ==========
+\textbf{基于多模态大模型的葡萄膜炎诊断研究} \hfill 2025.9 -- 至今
+\titlebreak
+项目描述：研究多模态大模型在眼科疾病（葡萄膜炎）诊断中的应用，旨在实现高精度、可解释的自动化诊断，并探索模型的数据效率、模态贡献与领域泛化能力。
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item \textbf{模型与数据}：采用 \textbf{Qwen3-VL-8B-Instruct} 模型，在包含1834张眼底图像（894名患者）的私有数据集上进行 \textbf{LoRA微调}。采用患者级别的严格数据划分，避免数据泄露。
+    \item \textbf{高性能基线}：通过系统的超参数调优，模型在独立测试集上达到了\textbf{95.74\%}的准确率与\textbf{96.52\%}的F1分数，为后续消融实验建立了强基线。
+    \item \textbf{系统消融分析}：主导设计了数据量影响、模态贡献等多组消融实验。首次在该任务上量化了训练数据量（5\%-100%）与模型性能的关联，并评估了FFA、OCT、Optos三种成像模态的诊断价值。
+    \item \textbf{前沿对比}：与多个零样本医学模型（\textbf{FLAIR}, \textbf{PubMedCLIP}）及眼科专用基础模型（\textbf{RETFound}）进行对比，系统分析了微调大模型相对于领域专用模型及零样本方法的优势。
+\end{itemize}
+\projectsep
+% --- 原有的推荐系统项目 ---
 \textbf{基于序列的推荐系统研究与模型改进} \hfill 2023.10 -- 2024.05
 \titlebreak
 项目描述：在杨波教授课题组进行科研训练，针对用户动态兴趣建模问题，复现并研究基于自注意力的序列推荐模型（SASRec），并尝试改进以提升推荐效果。
@@ -109,7 +120,7 @@
 \item 在MovieLens-1M数据集上进行实验，改进后的模型在\textbf{NDCG@10}和\textbf{HR@10}等关键指标上相比基线取得了小幅但稳定的提升。
 \end{itemize}
 \projectsep
-% --- 第二个项目 ---
+% --- 原有的医疗问答系统项目 ---
 \textbf{基于知识图谱与LLM的医疗问答系统} \hfill 2023.03 -- 2023.07
 \titlebreak
 项目描述：作为核心开发成员，参与构建一个结合医疗知识图谱与大语言模型（LLM）的智能问答系统，旨在提供精准、可解释的医疗信息查询服务。
@@ -121,9 +132,8 @@
 \end{itemize}
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技能与专长}
 \begin{itemize}[nosep]
-\item \textbf{编程语言：} Python, C/C++, (熟悉Go)
-\item \textbf{机器学习框架：} PyTorch, Scikit-learn
-\item \textbf{开发与工具：} Linux, Git, LaTeX, Docker (了解)
+\item \textbf{编程语言：} Python, C/C++
+\item \textbf{机器学习框架：} PyTorch, TensorFlow
 \item \textbf{英语能力：} CET-6 (627分)，具备流畅的英文技术文献阅读能力
 \end{itemize}
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
@@ -133,9 +143,6 @@
 \end{itemize}
 \section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他}
 \begin{itemize}[parsep=0.5ex]
-\item \textbf{技术博客：} \href{https://maksymilan.github.io/}{maksymilan.github.io}
-\item \textbf{GitHub：} \href{https://github.com/maksymilan}{github.com/maksymilan}
-% 已微调个人评价，以体现从电子科技大学到浙江大学的学术发展路径。
-\item \textbf{个人评价：} 对人工智能与计算机系统有浓厚兴趣，具备较强的自我驱动能力和扎实的数理基础。在电子科技大学取得优异成绩后保研至浙江大学，致力于在机器学习系统与AI基础设施方向进行更深入的研究与实践。
+    \item \textbf{个人评价：} 对人工智能有浓厚兴趣，具备较强的自我驱动能力和扎实的数理基础。在电子科技大学取得优异成绩后保研至浙江大学，师从吴健教授，致力于在多模态大模型方向进行更深入的研究与实践，并已在医学AI多模态诊断等应用领域开展前沿探索。
 \end{itemize}
 \end{document}
