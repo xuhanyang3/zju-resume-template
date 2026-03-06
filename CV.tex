@@ -14,135 +14,91 @@
 \usepackage{fontspec}
 \usepackage{xeCJK}
 \usepackage{enumitem}
-\CJKsetecglue{} %% 取消中文与数字之间的间隙
+\CJKsetecglue{}
 %% 主文档字体设置
 \setmainfont[
  Path = fonts/Main/,
  Extension = .otf,
- BoldFont = texgyretermes-bold.otf, % 加粗字体
-]{texgyretermes-regular.otf} % 正文字体
+ BoldFont = texgyretermes-bold.otf,
+]{texgyretermes-regular.otf}
 % 中文字体设置
 \setCJKmainfont[
  Path = fonts/hansans/,
  Extension = .ttf,
- BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
-]{NotoSansSC-Regular.otf} % 正文字体
+ BoldFont = NotoSansSC-Bold.ttf,
+]{NotoSansSC-Regular.otf}
 \usepackage{relsize}
 \usepackage{xspace}
-% 使用 fontawesome（部分图标）
 \usepackage{fontawesome}
-% A4纸，上下左右边距
 \usepackage[
  a4paper,
  left=1.2cm,
  right=1.2cm,
- top=1.5cm,
+ top=1.2cm,
  bottom=1cm,
  nohead
 ]{geometry}
-\renewcommand{\baselinestretch}{1.5} % 行间距设为1.5
+\renewcommand{\baselinestretch}{1.1}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\setlist{noitemsep} % 取消列表项间的额外间距
-%\setlist{nosep} % 取消所有垂直间距
-\setlist[itemize]{topsep=0.25em, leftmargin=*}
-\setlist[enumerate]{topsep=0.25em, leftmargin=*}
-% --- 用于控制【不同项目之间】的垂直距离 ---
-\newlength{\interProjectSpacing}
-\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
-\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
-% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
-\newlength{\intraProjectTitleSep}
-\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
-\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
-% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
-\newlength{\intraProjectListTopSep}
-\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
-% =======================================================================
-\titleformat{\section} % 定制 \section 命令
- {\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
- {}{0em} % 可用于为所有 section 添加前缀（如“章节...”）
- {} % 可用于在标题前插入代码
- [{\color{CVBlue}\titlerule}] % 在标题后插入一条横线
-\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+\setlist{noitemsep}
+\setlist[itemize]{topsep=0.1em, leftmargin=*, partopsep=0pt}
+\setlist[enumerate]{topsep=0.1em, leftmargin=*, partopsep=0pt}
+
+\newlength{\interEntrySpacing}
+\setlength{\interEntrySpacing}{0.5em}
+\newcommand{\entrysep}{\vspace{\interEntrySpacing}}
+
+\titleformat{\section}
+ {\normalsize\bfseries\raggedright}
+{}{0em}
+{}
+[{\color{CVBlue}\titlerule}]
+\titlespacing*{\section}{0cm}{*0.8}{*0.5}
+
 \begin{document}
 \pagenumbering{gobble}
-%%%% 利用tikz来定位照片
-% 【注意】：请将`avatar.jpg`替换为您的证件照文件名，并确保图片文件与.tex文件在同一目录，或在`\includegraphics`中指定正确路径。
-% 如果您不需要照片，请删除以下\tikzpicture环境。
+
 \begin{tikzpicture}[remember picture, overlay]
-\node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{xu.jpg}};
+\node[anchor = north east] at ($(current page.north east)+(-1.5cm,-1cm)$) {\includegraphics[height=2.5cm]{xu.jpg}};
 \end{tikzpicture}%
-%%%% 利用tikz来定位学校Logo，这里只在第一页显示
-% 【注意】：请将`your_university_logo.png`替换为您学校的Logo文件名，或删除本行以移除Logo。
-% 已根据您的要求，在“教育背景”部分加入了浙江大学的信息。您可以在此处使用浙江大学的Logo文件，例如 `zju-logo.png`。
-\begin{tikzpicture}[remember picture, overlay]
-\node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=1.5cm]{zju.png}}; % 请确保图片文件存在
-\end{tikzpicture}%
+
 \centerline{\LARGE\bfseries{徐晗洋}}
-\centerline{\normalsize{\faPhone\ 13915917895 \quad \faEnvelopeO\ \href{mailto:hanyangxucs@gmail.com}{hanyangxucs@gmail.com}}}
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}
-% ========== 浙江大学教育经历 (已补充导师信息) ==========
-\textbf{浙江大学 (Zhejiang University)} \hfill 2025.9 -- 至今\\[0.5em]
-计算机科学与技术 专业 \quad 硕士（保研，预计2028年毕业）
-\begin{itemize}[nosep]
-    \item \textbf{导师：吴健 教授}（长江学者，浙江大学求是特聘教授） % 补充导师信息
-    \item \textbf{研究方向：} 多模态大模型
-    \item \textbf{相关课程：} 深度学习，自然语言处理，计算机视觉
-\end{itemize}
-\vspace{0.5em} % 增加一点两段经历之间的间距
-% ========== 电子科技大学教育经历 ==========
-\textbf{电子科技大学 (University of Electronic Science and Technology of China)} \hfill 2022.9 -- 2025.6\\[0.5em]
-人工智能专业 \quad 本科
-\begin{itemize}[nosep]
-\item \textbf{GPA: 3.97/4.0}，专业排名：5/65
-\item 相关课程：数据结构与算法、机器学习、深度学习、计算机视觉、自然语言处理、概率论与数理统计
-\end{itemize}
-\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目与研究经历}
-% ========== 新增：葡萄膜炎诊断项目 (当前研究) ==========
-\textbf{基于多模态大模型的葡萄膜炎诊断研究} \hfill 2025.9 -- 至今
-\titlebreak
-项目描述：研究多模态大模型在眼科疾病（葡萄膜炎）诊断中的应用，旨在实现高精度、可解释的自动化诊断，并探索模型的数据效率、模态贡献与领域泛化能力。
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{模型与数据}：采用 \textbf{Qwen3-VL-8B-Instruct} 模型，在包含1834张眼底图像（894名患者）的私有数据集上进行 \textbf{LoRA微调}。采用患者级别的严格数据划分，避免数据泄露。
-    \item \textbf{高性能基线}：通过系统的超参数调优，模型在独立测试集上达到了\textbf{95.74\%}的准确率与\textbf{96.52\%}的F1分数，为后续消融实验建立了强基线。
-    \item \textbf{系统消融分析}：主导设计了数据量影响、模态贡献等多组消融实验。首次在该任务上量化了训练数据量（5\%-100%）与模型性能的关联，并评估了FFA、OCT、Optos三种成像模态的诊断价值。
-    \item \textbf{前沿对比}：与多个零样本医学模型（\textbf{FLAIR}, \textbf{PubMedCLIP}）及眼科专用基础模型（\textbf{RETFound}）进行对比，系统分析了微调大模型相对于领域专用模型及零样本方法的优势。
-\end{itemize}
-\projectsep
-% --- 原有的推荐系统项目 ---
-\textbf{基于序列的推荐系统研究与模型改进} \hfill 2023.10 -- 2024.05
-\titlebreak
-项目描述：在杨波教授课题组进行科研训练，针对用户动态兴趣建模问题，复现并研究基于自注意力的序列推荐模型（SASRec），并尝试改进以提升推荐效果。
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-\item 深入研究SASRec模型架构，使用\textbf{PyTorch}成功复现模型，在公开数据集上验证了其基线性能。
-\item 针对模型在捕捉长序列依赖时可能的信息稀释问题，提出了一种简单的\textbf{注意力权重修正方案}，以强化对关键历史行为的关注。
-\item 在MovieLens-1M数据集上进行实验，改进后的模型在\textbf{NDCG@10}和\textbf{HR@10}等关键指标上相比基线取得了小幅但稳定的提升。
-\end{itemize}
-\projectsep
-% --- 原有的医疗问答系统项目 ---
-\textbf{基于知识图谱与LLM的医疗问答系统} \hfill 2023.03 -- 2023.07
-\titlebreak
-项目描述：作为核心开发成员，参与构建一个结合医疗知识图谱与大语言模型（LLM）的智能问答系统，旨在提供精准、可解释的医疗信息查询服务。
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-\item 负责系统的\textbf{对话管理}与\textbf{查询转换模块}。将用户的自然语言问题解析并转换为面向知识图谱的结构化查询（如Cypher语句）。
-\item 利用\textbf{Python}及相关NLP库（如spaCy）处理用户输入，并结合规则与关键词匹配初步识别医疗实体与意图。
-\item 设计并实现了与\textbf{大语言模型（如ChatGPT API）}的协同流程：先由LLM对复杂查询进行意图澄清与信息补全，再将优化后的问题送入知识图谱引擎，最后整合两者的返回结果生成友好回复。
-\item 该项目实践了\textbf{RAG (检索增强生成)} 的基本思想，并锻炼了将前沿LLM能力与传统知识库系统结合落地的工程能力。
-\end{itemize}
-\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技能与专长}
+\centerline{\small{\faPhone\ 13915917895 \quad \faEnvelopeO\ \href{mailto:hanyangxucs@gmail.com}{hanyangxucs@gmail.com}}}
+
+\section{\faGraduationCap\ 教育背景}
+\textbf{浙江大学}\hfill 2025.9 -- 至今 \\
+计算机科学与技术 硕士（保研）\hfill 导师：吴健 教授（长江学者，求是特聘教授） \\
+研究方向：多模态大模型 \quad 相关课程：深度学习、自然语言处理、计算机视觉
+
+\vspace{0.2em}
+\textbf{电子科技大学}\hfill 2022.9 -- 2025.6 \\
+人工智能 本科 \hfill GPA: 3.97/4.0 (排名: 5/65) \\
+相关课程：数据结构与算法、机器学习、计算机视觉、概率论与数理统计
+
+\section{\faUsers\ 项目与研究经历}
+\textbf{基于多模态大模型的葡萄膜炎诊断研究} \hfill 2025.9 -- 至今 \\
+采用Qwen3-VL-8B模型在包含1834张眼底图像的私有数据集上进行LoRA微调，通过患者级数据划分与系统调优，在独立测试集上达到95.74\%准确率与96.52\% F1分数。主导了数据量（5\%-100\%）与多模态（FFA/OCT/Optos）影响的消融实验，并与FLAIR、PubMedCLIP、RETFound等前沿模型进行对比分析。
+
+\entrysep
+\textbf{基于序列的推荐系统研究与改进} \hfill 2023.10 -- 2024.05 \\
+在杨波教授课题组复现并改进SASRec序列推荐模型，针对长序列依赖中的信息稀释问题提出注意力权重修正方案，在MovieLens-1M数据集上使NDCG@10与HR@10指标获得稳定提升。
+
+\entrysep
+\textbf{基于知识图谱与LLM的医疗问答系统} \hfill 2023.03 -- 2023.07 \\
+负责对话管理与查询转换模块，将自然语言问题解析为知识图谱查询（Cypher），结合规则匹配与ChatGPT API实现意图澄清与信息补全，实践了RAG的基本流程。
+
+\section{\faCogs\ 技能专长}
 \begin{itemize}[nosep]
 \item \textbf{编程语言：} Python, C/C++
 \item \textbf{机器学习框架：} PyTorch, TensorFlow
-\item \textbf{英语能力：} CET-6 (627分)，具备流畅的英文技术文献阅读能力
+\item \textbf{英语能力：} CET-6 (627分)，具备流畅的英文文献阅读能力
 \end{itemize}
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
+
+\section{\faList\ 获奖情况}
 \begin{itemize}[nosep]
 \item 全国大学生数学竞赛（非数学类）\textbf{省级一等奖} \hfill 2023
 \item 电子科技大学校级“优秀学生”\textbf{奖学金}（连续两年） \hfill 2022, 2023
 \end{itemize}
-\section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他}
-\begin{itemize}[parsep=0.5ex]
-    \item \textbf{个人评价：} 对人工智能有浓厚兴趣，具备较强的自我驱动能力和扎实的数理基础。在电子科技大学取得优异成绩后保研至浙江大学，师从吴健教授，致力于在多模态大模型方向进行更深入的研究与实践，并已在医学AI多模态诊断等应用领域开展前沿探索。
-\end{itemize}
+
 \end{document}
