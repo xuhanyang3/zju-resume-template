@@ -14,89 +14,115 @@
 \usepackage{fontspec}
 \usepackage{xeCJK}
 \usepackage{enumitem}
-\CJKsetecglue{}
+\CJKsetecglue{} %% 取消中文与数字之间的间隙
 %% 主文档字体设置
 \setmainfont[
  Path = fonts/Main/,
  Extension = .otf,
- BoldFont = texgyretermes-bold.otf,
-]{texgyretermes-regular.otf}
+ BoldFont = texgyretermes-bold.otf, % 加粗字体
+]{texgyretermes-regular.otf} % 正文字体
 % 中文字体设置
 \setCJKmainfont[
  Path = fonts/hansans/,
  Extension = .ttf,
- BoldFont = NotoSansSC-Bold.ttf,
-]{NotoSansSC-Regular.otf}
+ BoldFont = NotoSansSC-Bold.ttf, % 加粗字体
+]{NotoSansSC-Regular.otf} % 正文字体
 \usepackage{relsize}
 \usepackage{xspace}
+% 使用 fontawesome（部分图标）
 \usepackage{fontawesome}
+% A4纸，上下左右边距
 \usepackage[
  a4paper,
- left=1.5cm,
- right=1.5cm,
+ left=1.2cm,
+ right=1.2cm,
  top=1.5cm,
- bottom=1.2cm,
+ bottom=1cm,
  nohead
 ]{geometry}
-\renewcommand{\baselinestretch}{1.2}
+\renewcommand{\baselinestretch}{1.5} % 行间距设为1.5
 \usepackage{titlesec}
 \usepackage{enumitem}
-\setlist{noitemsep}
-\setlist[itemize]{topsep=0.15em, leftmargin=*, partopsep=0pt}
-\setlist[enumerate]{topsep=0.15em, leftmargin=*, partopsep=0pt}
-
-\newlength{\interEntrySpacing}
-\setlength{\interEntrySpacing}{0.6em}
-\newcommand{\entrysep}{\vspace{\interEntrySpacing}}
-
-\titleformat{\section}
- {\normalsize\bfseries\raggedright}
-{}{0em}
-{}
-[{\color{CVBlue}\titlerule}]
-\titlespacing*{\section}{0cm}{*0.8}{*0.6}
-
+\setlist{noitemsep} % 取消列表项间的额外间距
+%\setlist{nosep} % 取消所有垂直间距
+\setlist[itemize]{topsep=0.25em, leftmargin=*}
+\setlist[enumerate]{topsep=0.25em, leftmargin=*}
+% --- 用于控制【不同项目之间】的垂直距离 ---
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em} % <--- 在此调整项目之间的距离
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+% --- 用于控制【项目标题】与下方【项目描述】的距离 ---
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em} % <--- 在此调整标题和描述的距离
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+% --- 用于控制【项目描述】与下方【要点列表】的距离 ---
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em} % <--- 在此调整描述和列表的距离
+% =======================================================================
+\titleformat{\section} % 定制 \section 命令
+ {\large\bfseries\raggedright} % 将 section 标题设置为大号、粗体且左对齐
+ {}{0em} % 可用于为所有 section 添加前缀（如"章节..."）
+ {} % 可用于在标题前插入代码
+ [{\color{CVBlue}\titlerule}] % 在标题后插入一条横线
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
 \begin{document}
 \pagenumbering{gobble}
-
+%%%% 利用tikz来定位照片
+% 【注意】：请将`avatar.jpg`替换为您的证件照文件名，并确保图片文件与.tex文件在同一目录，或在`\includegraphics`中指定正确路径。
+% 如果您不需要照片，请删除以下\tikzpicture环境。
 \begin{tikzpicture}[remember picture, overlay]
-\node[anchor = north east] at ($(current page.north east)+(-1.5cm,-1cm)$) {\includegraphics[height=2.5cm]{xu.jpg}};
+\node[anchor = north east] at ($(current page.north east)+(-2cm,-1.2cm)$) {\includegraphics[height=3cm]{xu.jpg}};
 \end{tikzpicture}%
-
+%%%% 利用tikz来定位学校Logo，这里只在第一页显示
+% 【注意】：请将`your_university_logo.png`替换为您学校的Logo文件名，或删除本行以移除Logo。
+% 已根据您的要求，在"教育背景"部分加入了浙江大学的信息。您可以在此处使用浙江大学的Logo文件，例如 `zju-logo.png`。
+\begin{tikzpicture}[remember picture, overlay]
+\node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=1.5cm]{zju.png}}; % 请确保图片文件存在
+\end{tikzpicture}%
 \centerline{\LARGE\bfseries{徐晗洋}}
-\centerline{\small{\faPhone\ 13915917895 \quad \faEnvelopeO\ \href{mailto:hanyangxucs@gmail.com}{hanyangxucs@gmail.com}}}
-
-\section{\faGraduationCap\ 教育背景}
-\textbf{浙江大学}\hfill 2025.9 -- 至今 \\
-人工智能 硕士（保研）\hfill 导师：吴健 教授（长江学者，求是特聘教授） \\
-研究方向：多模态大模型 \quad 相关课程：深度学习、自然语言处理、计算机视觉
-
-\vspace{0.2em}
-\textbf{电子科技大学}\hfill 2022.9 -- 2025.6 \\
-人工智能 本科 \hfill GPA: 3.97/4.0 (排名: 5/65) \\
-相关课程：数据结构与算法、机器学习、深度学习、计算机视觉、自然语言处理、概率论与数理统计
-
-\section{\faUsers\ 项目与研究经历}
-\textbf{基于多模态大模型的葡萄膜炎诊断研究} \hfill 2025.9 -- 至今 \\
+\centerline{\normalsize{\faPhone\ 13915917895 \quad \faEnvelopeO\ \href{mailto:hanyangxucs@gmail.com}{hanyangxucs@gmail.com}}}
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}
+% ========== 浙江大学教育经历 (已补充导师信息) ==========
+\textbf{浙江大学 (Zhejiang University)} \hfill 2025.9 -- 至今\\[0.5em]
+计算机科学与技术 专业 \quad 硕士（保研，预计2028年毕业）
+\begin{itemize}[nosep]
+    \item \textbf{导师：吴健 教授}（长江学者，浙江大学求是特聘教授） % 补充导师信息
+    \item \textbf{研究方向：} 多模态大模型
+    \item \textbf{相关课程：} 深度学习，自然语言处理，计算机视觉
+\end{itemize}
+\vspace{0.5em} % 增加一点两段经历之间的间距
+% ========== 电子科技大学教育经历 ==========
+\textbf{电子科技大学 (University of Electronic Science and Technology of China)} \hfill 2022.9 -- 2025.6\\[0.5em]
+人工智能专业 \quad 本科
+\begin{itemize}[nosep]
+\item \textbf{GPA: 3.97/4.0}，专业排名：5/65
+\item 相关课程：数据结构与算法、机器学习、深度学习、计算机视觉、自然语言处理、概率论与数理统计
+\end{itemize}
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目与研究经历}
+% ========== 新增：葡萄膜炎诊断项目 (当前研究) ==========
+\textbf{基于多模态大模型的葡萄膜炎诊断研究} \hfill 2025.9 -- 至今
+\titlebreak
 采用Qwen3-VL-8B模型在包含1834张眼底图像的私有数据集上进行LoRA微调，通过患者级数据划分与系统调优，在独立测试集上达到95.74\%准确率与96.52\% F1分数。主导了数据量（5\%-100\%）与多模态（FFA/OCT/Optos）影响的消融实验，并与FLAIR、PubMedCLIP、RETFound等前沿模型进行对比分析。本研究探索了通用视觉-语言大模型在医学图像诊断中的迁移能力与数据效率问题。
 
-\entrysep
-\textbf{基于序列的推荐系统研究与改进} \hfill 2023.10 -- 2024.05 \\
+\projectsep
+% --- 原有的推荐系统项目 ---
+\textbf{基于序列的推荐系统研究与改进} \hfill 2023.10 -- 2024.05
+\titlebreak
 在杨波教授课题组复现并改进SASRec序列推荐模型，针对长序列依赖中的信息稀释问题提出注意力权重修正方案，在MovieLens-1M数据集上使NDCG@10与HR@10指标获得稳定提升。通过分析用户历史行为序列，优化了模型对用户动态兴趣的建模能力。
 
-\entrysep
-\textbf{基于知识图谱与LLM的医疗问答系统} \hfill 2023.03 -- 2023.07 \\
+\projectsep
+% --- 原有的医疗问答系统项目 ---
+\textbf{基于知识图谱与LLM的医疗问答系统} \hfill 2023.03 -- 2023.07
+\titlebreak
 负责对话管理与查询转换模块，将自然语言问题解析为知识图谱查询（Cypher），结合规则匹配与ChatGPT API实现意图澄清与信息补全，实践了RAG的基本流程。该系统整合了结构化医疗知识与大语言模型的推理能力，提供精准、可解释的医疗信息查询服务。
 
-\section{\faCogs\ 技能专长}
+\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技能与专长}
 \begin{itemize}[nosep]
-\item \textbf{编程语言：} Python, C/C++ (熟悉Go)
-\item \textbf{机器学习框架：} PyTorch, TensorFlow, Scikit-learn
-\item \textbf{开发工具：} Linux, Git, LaTeX, Docker
-\item \textbf{英语能力：} CET-6 (627分)，具备流畅的英文技术文献阅读与写作能力
+\item \textbf{编程语言：} Python, C/C++
+\item \textbf{机器学习框架：} PyTorch, TensorFlow
+\item \textbf{英语能力：} CET-6 (627分)，具备流畅的英文技术文献阅读能力
 \end{itemize}
-
-\section{\faList\ 获奖情况}
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
 \begin{itemize}[nosep]
 \item 全国大学生数学竞赛（非数学类）\textbf{省级一等奖} \hfill 2023
 \item 电子科技大学校级"优秀学生"\textbf{奖学金}（连续两年） \hfill 2022, 2023
