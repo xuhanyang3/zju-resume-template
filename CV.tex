@@ -82,7 +82,7 @@
 人工智能专业 \quad 在读硕士研究生（保研，预计2028年毕业）
 \begin{itemize}[nosep]
     \item \textbf{导师：吴健 教授}（长江学者，浙江大学求是特聘教授） % 补充导师信息
-    \item \textbf{研究方向：} 多模态大模型
+    \item \textbf{研究方向：} 多模态大模型、知识融合
     \item \textbf{相关课程：} 深度学习，自然语言处理，计算机视觉
 \end{itemize}
 \vspace{0.5em} % 增加一点两段经历之间的间距
@@ -97,19 +97,19 @@
 \textbf{npj Digital Medicine（中科院一区 TOP，IF=18.0，第一作者，小修已修回）}\quad Expert-Comparable and Modality-Flexible Vision-Language Diagnosis of Non-Infectious Posterior Uveitis
 \begin{itemize}[nosep]
 \item \textbf{主要贡献：} 主导数据集构建、实验设计、代码实现与论文撰写。
-\item \textbf{研究内容与成果：} 构建融合多源影像与临床文本的图文数据集，完成数据清洗与预处理；基于Qwen3-VL-8B-Instruct，在视觉编码器、图文融合模块与语言模块中引入LoRA，实现视觉语言模型的参数高效领域适配。开展跨模态迁移、模态缺失、文本消融与数据效率实验，分析文本信息对多模态融合及模型泛化的影响。内部测试准确率达96.28\%，AUROC达0.9893。
+\item \textbf{研究内容与成果：} 构建融合多源影像与临床文本的图文数据集，完成数据清洗与预处理；基于Qwen3-VL-8B-Instruct，完成覆盖视觉编码、图文融合与语言建模模块的LoRA参数高效微调，实现多模态表征的领域适配。通过跨模态迁移、模态缺失、文本消融与数据效率实验，系统评估模型的跨模态迁移能力、缺失模态鲁棒性及数据利用效率。内部测试准确率达96.28\%，AUROC达0.9893。
 \end{itemize}
 \projectsep
 \textbf{BMVC 2026（CCF C，共一，排名第二，Accepted）}\quad Beyond Classification: Structured Supervision Aligns Visual Evidence with Medical Semantics
 \begin{itemize}[nosep]
 \item \textbf{主要贡献：} 参与实验设计、代码实现与论文撰写。
-\item \textbf{研究内容与成果：} 围绕视觉模型的背景捷径与空间对齐问题，在三个医学图像数据集上分析分类性能与视觉证据定位的一致性，比较图自监督、分类与分割联合训练及图文对齐等监督方式。BiomedCLIP微调后的平均PIB（最高响应图像块落入病灶框的比例）为41.0\%，高于普通ViT的16.8\%，揭示不同监督方式对视觉证据对齐的影响。
+\item \textbf{研究内容与成果：} 围绕视觉模型的背景捷径与空间对齐问题，在三个医学图像数据集上系统评估分类性能与视觉证据定位的一致性，对比图自监督、分类与分割联合训练及图文对齐等监督方式。BiomedCLIP微调后的平均PIB（最高响应图像块落入病灶框的比例）为41.0\%，高于普通ViT的16.8\%，揭示不同监督方式对视觉证据对齐的影响。
 \end{itemize}
 
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ 项目经历}
 \textbf{视觉基础模型与专家模型的知识融合}
 \begin{itemize}[nosep]
-\item 参与模型实现、实验设计、校准分析与结果整理。针对基础模型领域适配中的知识遗忘与跨域泛化问题，冻结预训练骨干并训练轻量适配模块，通过结构与残差特征分解、组件级知识对齐及文本语义引导的多尺度融合，整合基础模型的通用表征与专家模型的领域知识；在医学影像跨中心、跨模态实验中评估融合效果与知识保留能力。
+\item 参与模型实现、实验设计、校准分析与结果整理。针对基础模型领域适配中的知识遗忘与跨域泛化问题，采用冻结预训练骨干、训练轻量适配模块的参数高效方案，通过结构与残差特征分解、组件级知识对齐及文本语义引导的多尺度融合，整合基础模型的通用表征与专家模型的领域知识；在医学影像跨中心、跨模态实验中评估融合效果与知识保留能力。
 \end{itemize}
 
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技能与专长}
