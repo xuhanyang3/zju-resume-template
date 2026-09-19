@@ -73,12 +73,6 @@
 \begin{tikzpicture}[remember picture, overlay]
 \node[anchor = north east] at ($(current page.north east)+(-2cm,-0.7cm)$) {\includegraphics[height=3cm]{xu.jpg}};
 \end{tikzpicture}%
-%%%% 利用tikz来定位学校Logo，这里只在第一页显示
-% 【注意】：请将`your_university_logo.png`替换为您学校的Logo文件名，或删除本行以移除Logo。
-% 已根据您的要求，在"教育背景"部分加入了浙江大学的信息。您可以在此处使用浙江大学的Logo文件，例如 `zju-logo.png`。
-\begin{tikzpicture}[remember picture, overlay]
-\node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=1.5cm]{zju.png}}; % 请确保图片文件存在
-\end{tikzpicture}%
 \centerline{\LARGE\bfseries{徐晗洋}}
 \centerline{\normalsize{\faPhone\ 13915917895 \quad \faEnvelopeO\ \href{mailto:hanyangxucs@gmail.com}{hanyangxucs@gmail.com}}}
 \centerline{\normalsize{随时到岗\quad 可全职实习六个月以上}}
@@ -97,26 +91,25 @@
 人工智能专业 \quad 工学学士
 \begin{itemize}[nosep]
 \item \textbf{GPA: 3.97/4.0}，专业排名：5\%
-\item 相关课程：数据结构与算法、机器学习、深度学习、计算机视觉、自然语言处理、概率论与数理统计
 \end{itemize}
 \renewcommand{\baselinestretch}{1.12}\selectfont
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 研究成果与论文发表}
-\textbf{npj Digital Medicine（中科院一区Top，第一作者，小修已修回）}\quad Expert-Comparable and Modality-Flexible Vision-Language Diagnosis of Non-Infectious Posterior Uveitis
+\textbf{npj Digital Medicine（中科院一区 TOP，IF=18.0，第一作者，小修已修回）}\quad Expert-Comparable and Modality-Flexible Vision-Language Diagnosis of Non-Infectious Posterior Uveitis
 \begin{itemize}[nosep]
-\item \textbf{主要贡献：} 主导数据清洗、实验设计、代码实现与论文撰写。
-\item \textbf{研究内容与成果：} 构建融合多模态眼底影像与临床文本的高质量图文数据集，基于Qwen3-VL-8B-Instruct，采用LoRA参数高效微调开发AdaPUV，实现多模态大模型的领域适配。通过跨模态迁移、模态与文本消融及数据效率实验，系统分析文本引导对多模态融合的作用，评估模型在缺失模态条件下的鲁棒性与迁移能力。内部测试准确率达96.28\%，AUROC达0.9893。
+\item \textbf{主要贡献：} 主导数据集构建、实验设计、代码实现与论文撰写。
+\item \textbf{研究内容与成果：} 构建融合多源影像与临床文本的图文数据集，完成数据清洗与预处理；基于Qwen3-VL-8B-Instruct，在视觉编码器、图文融合模块与语言模块中引入LoRA，实现视觉语言模型的参数高效领域适配。开展跨模态迁移、模态缺失、文本消融与数据效率实验，分析文本信息对多模态融合及模型泛化的影响。内部测试准确率达96.28\%，AUROC达0.9893。
 \end{itemize}
 \projectsep
 \textbf{BMVC 2026（CCF C，共一，排名第二，Accepted）}\quad Beyond Classification: Structured Supervision Aligns Visual Evidence with Medical Semantics
 \begin{itemize}[nosep]
 \item \textbf{主要贡献：} 参与实验设计、代码实现与论文撰写。
-\item \textbf{研究内容与成果：} 将ViT的背景捷径与空间对齐问题引入医学图像分类研究，在乳腺超声、皮肤镜和胸部X光三个数据集上验证高分类准确率并不保证病灶证据对齐，系统比较图自监督、分类与分割联合训练及图文对齐。相较普通ViT，图文模型微调后的平均PIB从16.8\%提升至41.0\%，揭示不同监督方式对病灶证据对齐的影响。
+\item \textbf{研究内容与成果：} 围绕视觉模型的背景捷径与空间对齐问题，在三个医学图像数据集上分析分类性能与视觉证据定位的一致性，比较图自监督、分类与分割联合训练及图文对齐等监督方式。BiomedCLIP微调后的平均PIB（最高响应图像块落入病灶框的比例）为41.0\%，高于普通ViT的16.8\%，揭示不同监督方式对视觉证据对齐的影响。
 \end{itemize}
 
 \section{\makebox[\widthof{\faBriefcase}][c]{\color{CVBlue}\faBriefcase}\ 项目经历}
-\textbf{医学视觉基础模型的知识融合与跨域泛化}
+\textbf{视觉基础模型与专家模型的知识融合}
 \begin{itemize}[nosep]
-\item 参与模型实现、实验设计、校准分析与结果整理；针对医学基础模型在跨中心、跨模态数据上的泛化与知识遗忘问题，融合基础模型与专家模型，采用结构-残差特征解耦、组件级知识对齐和文本语义引导的多尺度重融合，实现不同模型知识的参数高效融合，分析通用表征与领域知识的互补作用，并提升模型在分布外数据上的泛化能力。
+\item 参与模型实现、实验设计、校准分析与结果整理。针对基础模型领域适配中的知识遗忘与跨域泛化问题，冻结预训练骨干并训练轻量适配模块，通过结构与残差特征分解、组件级知识对齐及文本语义引导的多尺度融合，整合基础模型的通用表征与专家模型的领域知识；在医学影像跨中心、跨模态实验中评估融合效果与知识保留能力。
 \end{itemize}
 
 \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技能与专长}
@@ -125,7 +118,6 @@
 \item \textbf{编程语言：} Python, C/C++
 \item \textbf{深度学习框架：} PyTorch，TensorFlow，熟悉模型构建、训练与部署。
 \end{itemize}
-\vspace{-0.8em}
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
 \begin{itemize}[nosep]
 \item 全国大学生数学竞赛（非数学类）省级一等奖 \hfill 2023
